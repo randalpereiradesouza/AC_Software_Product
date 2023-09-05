@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="shortcut icon" href="ico/Icone.ico">
+    <title>Techway</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+         .paragph{
+            columns: 200px 2;
+            column-gap: 30px;
+            color: #fff;
+            padding: 25px;
+         }
+         .title{
+            column-span: all;
+            display: block;
+         }   
+        
+    </style>
+</head>
+<body background="img/background-banner.jpg">
+    <div id="form-container">
+        <h1>Informe seus dados</h1>
+        <form action="pagina2.html" method="post">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            
+            <label for="cpf">CPF:</label>
+            <input type="text" id="cpf" name="cpf" required><br><br>
+
+            <label for="nome">E-mail:</label>
+            <input type="text" id="e-mail" name="e-mail" required><br><br>
+            
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required><br><br>
+            
+            <input type="submit" value="Avançar">
+        </form>
+    </div>
+</body>
+</html>
