@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
+   
+   try{
     const form = document.getElementById('cadastro-form');
     const mensagem = document.getElementById('mensagem');
-
+   
     form.addEventListener('submit', function (e) {
         e.preventDefault();
 
@@ -30,4 +32,40 @@ document.addEventListener('DOMContentLoaded', function () {
             console.error('Erro:', error);
         });
     });
+
+   }
+   catch{
+    const formchamado = document.getElementById('chamado-form');
+    const mensagemchamado = document.getElementById('mensagemchamado');
+    
+    formchamado.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const data = {
+            modelo: formchamado.modelo.value,
+            defeito: formchamado.defeito.value,
+            cpf: formchamado.cpf.value
+        };
+
+        fetch('/cadastrar_chamado', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            mensagemchamado.innerHTML = result.mensagemchamado;
+            formchamado.reset();
+        })
+        .catch(error => {
+            mensagemchamado.innerHTML = 'Erro ao cadastrar chamado.';
+            console.error('Erro:', error);
+        });
+    });
+   }
+
 });
+
+
