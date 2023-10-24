@@ -59,14 +59,15 @@ def cadastrar_chamado():
         modelo = request.json['modelo']
         defeito = request.json['defeito']
         cpf = request.json['cpf']
+        tipo = request.json['tipo']
 
-        insert_query = "INSERT INTO tb_chamado (modelo, defeito, cpf) VALUES (%s, %s, %s)"
-        insert_values = (modelo, defeito, cpf)
+        insert_query = "INSERT INTO tb_chamado (modelo, defeito, cpf, tipo, data) VALUES (%s, %s, %s, %s, NOW())"
+        insert_values = (modelo, defeito, cpf, tipo)
         cursor.execute(insert_query, insert_values)
-       
+
         db.commit()
         cursor.close()
-        return jsonify({'mensagemchamado': 'Chamado cadastrado com Sucesso!'})
+        return jsonify({'mensagemchamado': 'Chamado cadastrado/atualizado com Sucesso!'})
 
     except Exception as e:
         return jsonify({'mensagemchamado': f'Erro ao cadastrar chamado: {str(e)}'})

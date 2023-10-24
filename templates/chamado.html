@@ -8,7 +8,7 @@
 <body class="background-image">
 
     <form id="chamado-form">
-        <h1>Informe seus dados</h1>
+        <h1>Informe os dados da Solicitação</h1>
 
             <label for="Modelo">Modelo da Impressora:</label><br>
             <textarea id="Modelo" name="modelo" rows="4" cols="50" required></textarea>
@@ -19,11 +19,16 @@
             <label for="cpf">CPF/CNPJ:</label>
             <input type="text" id="cpf" name="cpf" required><br><br>
 
+
+            <label>Modalidade de Chamado</label><br>
+            <input type="radio" name="tipo" value="novo">Chamado Novo <br>
+            <input type="radio" name="tipo" value="retificar">Retificar Chamado <br>
+            <input type="radio" name="tipo" value="cancelar">Cancelar Chamado <br>
+
+
             <div id="mensagemchamado"></div>
             <script src="{{ url_for('static', filename='script.js') }}"></script>
             <input type="submit" value="Enviar Chamado">
-            
-
     </form>
         <!--script>
             const urlParams = new URLSearchParams(window.location.search);
@@ -31,6 +36,72 @@
             document.getElementById('nomeHidden').value = cpf;
             document.getElementById('nomePlaceholder').textContent = cpf;
         </script-->
+    
+        <style>
+            /* Apply styles to the body with class "background-image" */
+            body.background-image {
+                background: url('/static/img/background-banner.jpg') center/cover no-repeat;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+    
+            /* Style the form with ID "chamado-form" */
+            #chamado-form {
+                max-width: 400px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 5px;
+                box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            }
+    
+            /* Style headings */
+            h1 {
+                text-align: center;
+            }
+    
+            /* Style labels and input fields */
+            label {
+                display: block;
+                font-weight: bold;
+            }
+    
+            textarea, input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+    
+            /* Style radio buttons */
+            input[type="radio"] {
+                margin-right: 10px;
+            }
+    
+            /* Style the submit button */
+            input[type="submit"] {
+                background-color: #007bff;
+                color: #fff;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 3px;
+                cursor: pointer;
+            }
+    
+            /* Apply styles to the message container with ID "mensagemchamado" */
+            #mensagemchamado {
+                margin-top: 10px;
+                padding: 10px;
+                background-color: #f4f4f4;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+        </style>
       
 </body>
 </html>

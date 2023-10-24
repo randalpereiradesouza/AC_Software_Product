@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = {
             modelo: formchamado.modelo.value,
             defeito: formchamado.defeito.value,
-            cpf: formchamado.cpf.value
+            cpf: formchamado.cpf.value,
+            tipo: formchamado.tipo.value
         };
 
         fetch('/cadastrar_chamado', {
