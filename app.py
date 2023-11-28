@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, jsonify, redirect
 import mysql.connector
+import smtplib
+import email.message
+
+
 app = Flask(__name__)
 
 # Configuração do banco de dados MySQL
@@ -106,6 +110,47 @@ def cadastrar_cliente():
 
     except Exception as e:
         return jsonify({'mensagem': f'Erro ao cadastrar/atualizar cliente: {str(e)}'})
+
+
+# Rota para o contato
+@app.route('/contato', methods=['GET', 'POST'])
+def contato():
+    try:
+
+        if request.method == 'POST':
+            nome = request.form['nome']
+            cpf = request.form['cpf']
+            email_contato = request.form['email']
+            mensagem_contato = request.form['mensagem']
+
+        # configurar as informações do e-mail
+            msg = email.message.Message()
+            msg['Subject'] = 'e-mail Fale Concosco'
+            msg['From'] = 'techway.tech2023@gmail.com'
+            msg['To'] = 'techway.tech2023@gmail.com'
+            password = 'ibfj hrqr hymr enhc'
+            msg.add_header('Content-Type', 'text/html; charset=utf-8')
+            msg_contato = f"""
+            <p>O Sr(a) {nome}</p>
+            <p>Portador do CPF:{cpf}</p>
+            <p>Email: {email_contato} </p>
+            <p>Enviou a seguinte mensagem: {mensagem_contato}</p>
+            """
+            msg.set_payload(msg_contato, charset='utf-8')
+
+            s = smtplib.SMTP('smtp.gmail.com: 587')
+            s.starttls()
+            # Login Credenciais para enviar email
+            s.login(msg['From'], password)
+            s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
+            s.quit()
+            return render_template('principal.html')
+
+    except Exception as e:
+        return jsonify({'mensagemcontato': f"Erro ao enviar e-mail: {str(e)}"})
+
+        # Se a requisição for do tipo GET, renderize a página de contato
+    return render_template('contato.html')
 
 
 if __name__ == '__main__':

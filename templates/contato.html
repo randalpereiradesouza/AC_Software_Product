@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/Icone.ico') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Formulário de Contato</title>
+</head>
+<body class="background-image">
+
+    <form id="contato-form" method="post">
+        <h1>Formulário de Contato</h1>
+
+        <label for="nome">nome:</label><br>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="cpf">cpf:</label><br>
+        <input type="text" id="cpf" name="cpf" required><br>
+
+        <label for="email">email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+
+        <label for="mensagem">mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea><br>
+        
+        <div id="mensagemcontato"></div>  
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+        <input type="submit" value="Enviar">
+    </form>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <style>
+        /* Apply styles to the body with class "background-image" */
+        body.background-image {
+            background: url('/static/img/background-banner.jpg') center/cover no-repeat;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Style the form with ID "cadastro-form" */
+        #contato-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style headings */
+        h1 {
+            text-align: center;
+        }
+
+        /* Style labels and input fields */
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+       
+        /* Apply styles to the message container with ID "mensagemcontato" */
+        #mensagemcontato {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        /* Add styles for the "enviar" button */
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</body>
+</html>
